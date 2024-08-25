@@ -1,2 +1,0 @@
-RewriteEngine On
-RewriteRule (.*) http://web.archive.org/web/20210309015847/https://relatocorto.com/$1 [R=301,L]
