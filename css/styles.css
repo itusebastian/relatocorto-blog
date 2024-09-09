@@ -14,11 +14,11 @@ Text Domain: relatocorto
 
 /* 1. General Styles */
 
-.gr-logo {
+.itu_logo {
   margin-top: 60px;
   margin-bottom: 60px;
 }
-.gr-logo img {
+.itu_logo img {
   max-width: 100%; /* Scale the logo down to fit within its container */
   height: auto; /* Maintain aspect ratio */
 }
@@ -184,7 +184,7 @@ header {
 
 .itu_header_background {
   position: relative;
-  background-image: url("img/rc-bg-main.jpg");
+  background-image: url("/img/rc-bg-main.jpg");
   background-size: cover; /* Ensures the background image covers the element */
   background-position: center center; /* Centers the background image */
   background-repeat: no-repeat; /* Prevents repeating the background image */
@@ -207,7 +207,7 @@ header {
   transition: all 0.5s;
 }
 
-.gr-logo a {
+.itu_logo a {
   display: inline-block;
 }
 
@@ -562,16 +562,16 @@ p:empty {
 
 /* Other styles */
 
-.gr-search a,
-.gr-social a,
+.itu_search a,
+.itu_social a,
 .itu_menu_holder a {
   color: #abaeb3; /* Initial color */
   text-decoration: none; /* No underline by default */
   transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
-.gr-search a:hover,
-.gr-social a:hover,
+.itu_search a:hover,
+.itu_social a:hover,
 .itu_menu_holder a:hover {
   color: #0866ff; /* Color on hover */
   text-decoration: none; /* Ensure no underline on hover */
@@ -686,14 +686,14 @@ p:empty {
   transition: transform 0.5s 0.4s, opacity 0.5s 0.4s, color 0.35s, border 0.35s,
     background 0.35s;
 }
-.gr-search {
+.itu_search {
   float: left;
 }
-.gr-social {
+.itu_social {
   float: right;
 }
-.gr-social > a,
-.gr-search > a {
+.itu_social > a,
+.itu_search > a {
   display: inline-block;
   transition: color 0.15s;
   -webkit-transition: all 0.15s;
@@ -708,7 +708,7 @@ p:empty {
   padding-left: 4px;
   font-weight: 400;
 }
-.gr-social > a:last-child {
+.itu_social > a:last-child {
   margin-right: 0;
 }
 
@@ -729,17 +729,17 @@ p:empty {
   transform: scale(0.8) translateY(-10%);
 }
 
-.gr-logo {
+.itu_logo {
   text-align: center;
   margin: 60px 0;
 }
-.gr-logo h2 {
+.itu_logo h2 {
   margin-top: 30px;
   font-size: 24px;
   line-height: 40px;
   text-shadow: 0 1px #abaeb3;
 }
-.gr-logo h2 span {
+.itu_logo h2 span {
   font-weight: 400;
   color: #000;
   border-bottom: 2px solid #5aa7ff;
@@ -996,7 +996,7 @@ p:empty {
   background-color: #eaeaea;
   background-size: cover;
   background-position: center center;
-  background-image: url("img/rc-bg-main.jpg");
+  background-image: url("/img/rc-bg-main.jpg");
 }
 .itu_footer_widget .itu_widget {
   background: #242526;
@@ -1814,7 +1814,7 @@ select {
   display: block;
   clear: both;
 }
-.itu_related_posts .gr-img-rel-post {
+.itu_related_posts .itu_img-rel-post {
   float: left;
   width: 30%;
   margin-right: 10px;
@@ -1822,11 +1822,11 @@ select {
 .itu_related_posts {
   line-height: 15px;
 }
-.itu_related_posts .gr-date-rel-post {
+.itu_related_posts .itu_date-rel-post {
   font-size: 12px;
   color: #999;
 }
-.itu_related_posts .gr-content-rel-post h6 {
+.itu_related_posts .itu_content-rel-post h6 {
   display: table-cell;
   vertical-align: middle;
   font-size: 14px;
@@ -1837,7 +1837,7 @@ select {
   overflow: hidden;
   line-height: 20px;
 }
-.itu_related_posts .gr-com-rel-post {
+.itu_related_posts .itu_com-rel-post {
   font-size: 12px;
 }
 .wp-caption {
@@ -1941,8 +1941,8 @@ select {
   padding: 0px;
 }
 
-.gr-search-pop-up,
-.gr-social-pop-up {
+.itu_search-pop-up,
+.itu_social-pop-up {
   position: absolute;
   top: 0;
   display: none;
@@ -1950,17 +1950,17 @@ select {
   transition: opacity 0.5s, top 0.35s;
   -webkit-transition: opacity 0.5s, top 0.35s;
 }
-.gr-search-pop-up {
+.itu_search-pop-up {
   left: 0;
 }
-.gr-social-pop-up {
+.itu_social-pop-up {
   right: 0;
 }
-.gr-search-pop-up .searchform.headform #s-top {
+.itu_search-pop-up .searchform.headform #s-top {
   float: left;
   width: 85%;
 }
-.gr-search-pop-up .searchform.headform #searchsubmit-top {
+.itu_search-pop-up .searchform.headform #searchsubmit-top {
   float: left;
 }
 .itu_menu.itu_cloned {
@@ -1969,14 +1969,14 @@ select {
 .itu_menu.itu_cloned_show {
   z-index: 999;
 }
-.itu_menu.itu_cloned_show .gr-search-pop-up {
+.itu_menu.itu_cloned_show .itu_search-pop-up {
   display: block;
   top: 50%;
   margin-top: -14px;
   transition: opacity 0.5s, top 0.35s;
   -webkit-transition: opacity 0.5s, top 0.35s;
 }
-.itu_menu.itu_cloned_show .gr-social-pop-up {
+.itu_menu.itu_cloned_show .itu_social-pop-up {
   display: block;
   top: 50%;
   margin-top: -12px;
@@ -2630,7 +2630,7 @@ blockquote:after {
   -moz-transition: background 0.35s, color 0.35s;
 }
 .itu_pg .page-numbers.current,
-.gr-logo h2 span {
+.itu_logo h2 span {
   border-bottom: 2px solid #0866ff;
 }
 .itu_pg .page-numbers:hover,
@@ -2663,35 +2663,35 @@ blockquote:after {
   border: 1px solid #0866ff;
 }
 
-.gr-owl-holder {
+.itu_owl-holder {
   position: relative;
   float: left;
   overflow: hidden;
   text-align: center;
   cursor: pointer;
 }
-.gr-owl-holder img {
+.itu_owl-holder img {
   transition: transform 0.15s ease-in-out;
   -webkit-transition: -webkit-transform 0.15s ease-in-out;
 }
-.owl-item:hover .gr-owl-holder img {
+.owl-item:hover .itu_owl-holder img {
   -webkit-transform: scale(1.1);
   transition: transform 0.2s ease-in-out;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
   transform: scale(1.1);
 }
-.gr-owl-holder .gr-owl-content::before,
-.gr-owl-holder .gr-owl-content::after {
+.itu_owl-holder .itu_owl-content::before,
+.itu_owl-holder .itu_owl-content::after {
   pointer-events: none;
 }
-.gr-owl-holder .gr-owl-content::after {
+.itu_owl-holder .itu_owl-content::after {
   content: "";
   display: block;
   width: 100%;
   height: 100%;
 }
-.gr-owl-holder .gr-owl-content,
-.gr-owl-holder .gr-owl-content > a {
+.itu_owl-holder .itu_owl-content,
+.itu_owl-holder .itu_owl-content > a {
   position: absolute;
   top: 0;
   left: 0;
@@ -2699,14 +2699,14 @@ blockquote:after {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.15);
 }
-.gr-owl-holder .gr-owl-content > a {
+.itu_owl-holder .itu_owl-content > a {
   z-index: 1000;
   text-indent: 200%;
   white-space: nowrap;
   font-size: 0;
   opacity: 0;
 }
-.gr-owl-holder .gr-owl-content-holder {
+.itu_owl-holder .itu_owl-content-holder {
   position: absolute;
   left: 0;
   top: 50%;
@@ -2716,7 +2716,7 @@ blockquote:after {
   transform: translateY(-50%);
   padding: 15px;
 }
-.gr-owl-holder .gr-owl-content-holder:after {
+.itu_owl-holder .itu_owl-content-holder:after {
   content: "";
   display: block;
   width: 10%;
@@ -2728,19 +2728,19 @@ blockquote:after {
   -webkit-transition: width 0.15s;
   -moz-transition: width 0.15s;
 }
-.owl-item:hover .gr-owl-holder .gr-owl-content-holder:after {
+.owl-item:hover .itu_owl-holder .itu_owl-content-holder:after {
   width: 15%;
   transition: width 0.2s;
   -moz-transition: width 0.2s;
   -webkit-transition: width 0.2s;
 }
-.gr-owl-holder .gr-owl-date {
+.itu_owl-holder .itu_owl-date {
   color: #fff;
   font-weight: 300;
   font-size: 12px;
   letter-spacing: 1px;
 }
-.gr-owl-holder h2 {
+.itu_owl-holder h2 {
   font-size: 20px;
   line-height: 30px;
   font-weight: 400;
@@ -2773,7 +2773,7 @@ blockquote:after {
 /* Smartphones (portrait and landscape) ----------- */
 
 @media (min-width: 0px) and (max-width: 767px) {
-  .gr-logo img {
+  .itu_logo img {
     max-width: 80%; /* Scale down further for small screens */
     display: block; /* Ensures the logo behaves as a block-level element */
     margin: 0 auto; /* Center the logo */
