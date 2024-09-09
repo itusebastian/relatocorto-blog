@@ -1,4 +1,4 @@
-fsdafdsagfsdgd# Fiction Blog
+# Fiction Blog
 
 Welcome to my Fiction Blog repository! Here, I share my creative stories and serialized fiction, updated monthly.
 
