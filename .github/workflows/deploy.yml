@@ -14,7 +14,6 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      # Inject SEARCH_ENGINE_ID into search.html
       - name: Inject SEARCH_ENGINE_ID into search.html
         run: |
           sed -i 's/SEARCH_ENGINE_ID_PLACEHOLDER/${{ secrets.SEARCH_ENGINE_ID }}/g' search.html
@@ -24,4 +23,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./ # Adjust if your static files are in a different directory
