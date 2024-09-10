@@ -337,7 +337,7 @@ jQuery(document).ready(function ($) {
   }
 
   // Load dynamic content and initialize scripts in sequence
-  $.when(loadHeader(), loadOverlays(), loadSidebar(), loadWidgets())
+  $.when(loadHeader(), loadOverlays(), loadWidgets())
     .done(function () {
       // Initialize the menu after all components are loaded
       initializeMenu();
