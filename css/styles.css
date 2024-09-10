@@ -1,0 +1,2879 @@
+/*
+Theme Name: RelatoCorto
+Theme URI: https://www.relatocorto.com
+Author: Sebastián Iturralde
+Author URI: https://www.itusebastian.com
+Description: RelatoCorto is a clean and modern theme designed for sharing short stories online. Its minimalist design emphasizes readability, making it easy for readers to immerse themselves in your stories. The theme is fully responsive, customizable, and optimized for SEO, providing the perfect platform for writers to showcase their work.
+Version: 1.0
+License: GPL-2.0+
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: relatocorto
+*/
+
+/* Reset browser styles (optional, using Normalize.css or similar) */
+
+/* 1. General Styles */
+
+.itu_logo {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.itu_logo img {
+  max-width: 100%; /* Scale the logo down to fit within its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+body {
+  background-color: #1f2021 !important;
+  font-family: "Lato", sans-serif !important;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #dfe1e6 !important;
+  font-size: 15px;
+}
+
+.preloader {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.preloader,
+.itu_site_holder {
+  background-color: #18191a;
+}
+.preloader .itu_load_ring,
+.preloader .itu_preload_logo {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+.preloader .itu_load_ring {
+  top: 70%;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: flash;
+  animation-name: flash;
+}
+
+h1,
+h1 a {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  line-height: 40px;
+  font-weight: 400;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 32px;
+}
+h2,
+h2 a {
+  font-family: "Lato", sans-serif;
+  line-height: 34px;
+  font-weight: 300;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 30px;
+}
+h3,
+h3 a {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  line-height: 28px;
+  font-weight: 400;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 24px;
+}
+h4,
+h4 a {
+  font-family: "Lato", sans-serif;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 18px;
+}
+h5,
+h5 a {
+  font-family: "Lato", sans-serif;
+  line-height: 18px;
+  font-weight: normal;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 16px;
+}
+h6,
+h6 a {
+  font-family: "Lato", sans-serif;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+  color: #abaeb3;
+  font-size: 16p;
+}
+@-webkit-keyframes flash {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+.preloader .itu_preload_logo {
+  top: 30%;
+  left: 0;
+}
+.preloader.loaded .itu_load_ring h2,
+a:hover,
+.itu_box_holder .itu_box_title,
+#comments .logged-in-as a:first-child,
+.itu_widget .itu_tweet_content a,
+.itu_header_menu a:hover,
+.item a:hover,
+.item .itu_blog_post_cat.itu_mas_cat,
+.item .itu_blog_post_cat.itu_mas_cat a,
+.this_page .itu_blog_post_cat a:hover,
+.itu_widget .cff-wrapper a,
+.dropcaps {
+  color: #abaeb3;
+}
+.preloader.loaded .itu_preload_logo {
+  transition: top 0.5s;
+}
+.preloader.loaded .itu_load_ring {
+  top: 50%;
+  opacity: 0;
+  transition: top 0.5s 0.5s, opacity 0.5s 0.5s;
+}
+.preloader.loaded .itu_load_ring h2 {
+  color: #5aa7ff;
+  transition: color 0.5s;
+}
+
+header {
+  position: relative;
+  margin-bottom: 60px;
+  background-color: #18191a;
+}
+
+.itu_header_background {
+  position: relative;
+  background-image: url("/img/rc-bg-main.jpg");
+  background-size: cover; /* Ensures the background image covers the element */
+  background-position: center center; /* Centers the background image */
+  background-repeat: no-repeat; /* Prevents repeating the background image */
+  opacity: 0.95; /* Optional: Adjust opacity as needed */
+}
+.itu_header_background:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.itu_site_holder {
+  margin: 30px;
+  background: #18191a;
+  transition: all 0.5s;
+}
+
+.itu_logo a {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: #5aa7ff;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #0866ff;
+  outline: none !important;
+}
+p:empty {
+  margin: 0 !important;
+}
+
+.img-responsive {
+  margin: 0 auto;
+}
+.wide .row {
+  margin: 0 !important;
+}
+.wide .col-md-12 {
+  padding: 0 !important;
+}
+
+#itu_box_search,
+#itu_box_social {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+}
+.itu_box_overlay {
+  visibility: hidden;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.5s, visibility 0s 0.5s;
+  transition: transform 0.5s, visibility 0s 0.5s;
+}
+
+.itu_close_over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.itu_box_overlay.itu_box_open_s {
+  visibility: visible;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
+.itu_box_holder {
+  position: absolute;
+  min-width: 450px;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  z-index: 10000;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* Blog style */
+.itu_sidebar_pad {
+  padding-right: 60px;
+}
+.itu_sidebar_pad.itu_left_side {
+  padding-right: 15px;
+}
+.item {
+  width: 100%;
+  float: none;
+  padding: 0;
+  margin-bottom: 50px;
+}
+.itu_blog_post_featuder_holder {
+  overflow: hidden;
+  display: flex; /* Ensures the image container is responsive */
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  overflow: hidden; /* Ensures no overflow outside the container */
+  position: relative; /* Required for absolute positioning of the image */
+}
+.itu_blog_post_featuder_holder a {
+  display: block; /* Makes the anchor tag a block element */
+}
+.itu_blog_post_featuder_holder a img {
+  width: 100%; /* Makes the image fill the width of its container */
+  height: auto; /* Maintains the aspect ratio of the image */
+  display: block; /* Removes the extra space below the image */
+  transition: transform 0.15s ease-in-out;
+  -moz-transition: transform 0.15s ease-in-out;
+  -webkit-transition: -webkit-transform 0.15s ease-in-out;
+}
+.itu_blog_post_featuder_holder a:hover img {
+  transition: transform 0.2s ease-in-out;
+  -moz-transition: transform 0.2s ease-in-out;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.item .itu_post_holder:not(.quote_post):not(.link_post) {
+  background-color: #242526;
+  padding-bottom: 20px;
+}
+.item .itu_post_holder img {
+  transition: transform 0.15s ease-in-out;
+  -moz-transition: transform 0.15s ease-in-out;
+  -webkit-transition: -webkit-transform 0.15s ease-in-out;
+}
+.item .itu_img_grid:hover img,
+.item .itu_simple_image:hover img {
+  transition: transform 0.2s ease-in-out;
+  -moz-transition: transform 0.2s ease-in-out;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.item .itu_post_holder:hover .flexslider img {
+  transform: none !important;
+}
+.head {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  border: none;
+  padding: 40px 0;
+  overflow: hidden;
+}
+.head .itu_up_title {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  padding: 0 20px 0 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+}
+.head .itu_up_title .text-overflow-center {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.blog_title {
+  margin: 5px 0;
+}
+.blog_title_a {
+  position: relative;
+  z-index: 1;
+}
+.text_holder {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.post_audio .itu_blog_post_featuder_holder {
+  height: 100%;
+}
+.post_audio .itu_media {
+  position: relative;
+}
+.itu_blog_post_cat,
+.itu_blog_post_cat a {
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+}
+.quote_post .itu_acc_dark .text_holder,
+.quote_post .itu_acc_dark .author a,
+.link_post .itu_acc_dark .text_holder,
+.link_post .itu_acc_dark .itu_blog_post_cat,
+.link_post .itu_acc_dark .text_holder a,
+.link_post .itu_acc_dark .text_holder h3 {
+  color: #fff;
+}
+.quote_post .itu_acc_light .text_holder,
+.quote_post .itu_acc_light .author a,
+.link_post .itu_acc_light .text_holder,
+.link_post .itu_acc_light .itu_blog_post_cat,
+.link_post .itu_acc_light .text_holder a,
+.link_post .itu_acc_light .text_holder h3 {
+  color: #444;
+}
+.itu_ddate {
+  padding-right: 10px;
+}
+.itu_blog_post_cat a:hover {
+  transition: transform 0.35s;
+  -moz-transition: transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+}
+.itu_blog_post_cat a:hover::before {
+  transform: translateY(3px);
+  -moz-transform: translateY(3px);
+  -webkit-transform: translateY(3px);
+  transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.itu_blog_post_cat a:hover::after {
+  transform: translateY(-3px);
+  -moz-transform: translateY(-3px);
+  -webkit-transform: translateY(-3px);
+}
+.itu_blog_post_cat_holder {
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.quote_post .text_holder,
+.link_post .text_holder {
+  position: relative;
+  text-align: inherit;
+  margin-top: 0;
+  padding: 100px 60px 80px 60px;
+  font-style: italic;
+}
+.link_post .text_holder {
+  text-align: center;
+  font-style: normal;
+}
+.link_post .blog_title {
+  margin: 10px 0;
+}
+.link_post .blog_title_a {
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+.this_page .quote_post .author,
+.quote_post .author {
+  line-height: 20px;
+}
+.gallery_post .itu_media .col-xs-4,
+.gallery_post .itu_media .col-xs-6 {
+  padding: 5px;
+}
+.itu_blog_tag_holder {
+  float: right;
+}
+.itu_search_container .item {
+  margin-bottom: 0;
+  border: none;
+}
+.itu_search_container .item .itu_post_holder {
+  padding: 0;
+}
+.itu_search_container .itu_media,
+.itu_search_container .itu_blog_post_content_holder {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.itu_search_container .itu_sarch_table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  background-color: #f6f6f6;
+}
+.itu_sarch_table .itu_search_arrow {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  margin-top: -30px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 0 30px 20px;
+  border-color: transparent transparent transparent #f6f6f6;
+  z-index: 1;
+}
+.itu_sarch_table .itu_search_arrow.itu_search_arrow_back {
+  left: -20px;
+  border-width: 30px 20px 30px 0;
+  border-color: transparent #fbfbfb transparent transparent;
+}
+.itu_sarch_table .head {
+  text-align: center;
+  border: none;
+  padding: 0px 20px;
+}
+.itu_search_container .blog_title {
+  line-height: 40px;
+}
+.itu_search_container .itu_blog_post_cat,
+.itu_search_container .itu_blog_post_cat a,
+.itu_search_container .blog_title {
+  font-weight: 400;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  header {
+    margin-bottom: 0;
+  }
+  .quote_post .text_holder {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .quote_post .text_holder:before,
+  .quote_post .text_holder:after {
+    font-size: 30px;
+  }
+  .quote_post .text_holder .author {
+    font-size: 13px;
+  }
+  .itu_pg {
+    margin-bottom: 60px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 980px) {
+  .quote_post .text_holder {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .quote_post .text_holder:before,
+  .quote_post .text_holder:after {
+    font-size: 34px;
+  }
+  .quote_post .text_holder .author {
+    font-size: 14px;
+  }
+  .itu_sidebar_pad {
+    padding-right: 15px;
+  }
+}
+
+/* Other styles */
+
+.itu_search a,
+.itu_social a,
+.itu_menu_holder a {
+  color: #abaeb3; /* Initial color */
+  text-decoration: none; /* No underline by default */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.itu_search a:hover,
+.itu_social a:hover,
+.itu_menu_holder a:hover {
+  color: #0866ff; /* Color on hover */
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+.itu_box_holder .itu_search_input {
+  background: none;
+  border: 1px solid #abaeb3;
+  border-radius: 0;
+  padding: 10px;
+  color: #abaeb3;
+  width: 70%;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0;
+  font-weight: 400;
+  -moz-transform: translateX(-100px);
+  -webkit-transform: translateX(-100px);
+  transform: translateX(-100px);
+  outline: none !important;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.itu_box_holder .itu_search_input:hover {
+  border: 1px solid #5aa7ff;
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+  -moz-transition: border 0.35s;
+}
+.itu_box_holder .itu_search_submit,
+.itu_box_holder .itu_close {
+  background: none;
+  border: 1px solid #abaeb3;
+  padding: 10px 20px;
+  color: #abaeb3;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  opacity: 0;
+  outline: none !important;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+}
+.itu_box_holder .itu_search_submit:hover {
+  border: 1px solid #5aa7ff;
+  background: #5aa7ff;
+  color: #abaeb3;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+}
+.itu_box_holder .itu_close {
+  letter-spacing: 4px;
+  font-weight: 300;
+  content: "";
+  border: none;
+  margin-top: 60px;
+  transition: opacity 0.9s;
+  -webkit-transition: opacity 0.9s;
+  -moz-transition: opacity 0.9s;
+  padding: 0 15px;
+}
+
+.itu_box_holder .itu_box_title {
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.itu_box_holder .itu_search_submit {
+  -moz-transform: translateX(100px);
+  -webkit-transform: translateX(100px);
+  transform: translateX(100px);
+}
+.itu_box_holder .itu_box_share_holder {
+  text-align: center;
+}
+.itu_box_holder .itu_box_share_holder a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 47px;
+  margin-right: 15px;
+  background: none;
+  color: #abaeb3;
+  border: 1px solid #abaeb3;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.itu_box_holder .itu_box_share_holder a:hover {
+  border: 1px solid #5aa7ff;
+  background: #5aa7ff;
+  color: #abaeb3;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+
+.itu_box_open_s .itu_search_submit,
+.itu_box_open_s .itu_search_input,
+.itu_box_open_s .itu_close {
+  opacity: 1;
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.5s 0.4s, opacity 0.5s 0.4s,
+    color 0.35s, border 0.35s, background 0.35s;
+  transform: translateX(0);
+  transition: transform 0.5s 0.4s, opacity 0.5s 0.4s, color 0.35s, border 0.35s,
+    background 0.35s;
+}
+.itu_search {
+  float: left;
+}
+.itu_social {
+  float: right;
+}
+.itu_social > a,
+.itu_search > a {
+  display: inline-block;
+  transition: color 0.15s;
+  -webkit-transition: all 0.15s;
+  -moz-transition: color 0.15s;
+  border-top: 4px solid #abaeb3;
+  padding-top: 10px;
+  min-width: 30px;
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding-left: 4px;
+  font-weight: 400;
+}
+.itu_social > a:last-child {
+  margin-right: 0;
+}
+
+.itu_share_box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 2px solid #000;
+  display: none;
+}
+.itu_share_box a {
+  display: block;
+  text-align: center;
+}
+.itu_site_holder.itu_box_open {
+  -webkit-transform: scale(0.8) translateY(-10%);
+  transition: all 0.5s;
+  transform: scale(0.8) translateY(-10%);
+}
+
+.itu_logo {
+  text-align: center;
+  margin: 60px 0;
+}
+.itu_logo h2 {
+  margin-top: 30px;
+  font-size: 24px;
+  line-height: 40px;
+  text-shadow: 0 1px #abaeb3;
+}
+.itu_logo h2 span {
+  font-weight: 400;
+  color: #000;
+  border-bottom: 2px solid #5aa7ff;
+}
+.itu_head {
+  margin-bottom: 30px;
+}
+.wpcf7 {
+  border-top: 1px solid #dcdcdc;
+  margin-top: 40px !important;
+  padding: 40px 0 !important;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.wpcf7 input {
+  width: 100%;
+}
+.wpcf7 textarea {
+  width: 100%;
+  height: 182px;
+}
+.wpcf7 input,
+.wpcf7 textarea,
+#comments input,
+#comments textarea {
+  background-color: #242526;
+  color: #dfe1e6;
+  border: 1px solid #dcdcdc;
+  padding: 5px 10px;
+  margin-top: 3px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+}
+.wpcf7 input:hover,
+.wpcf7 textarea:hover,
+#comments input:hover,
+#comments textarea:hover,
+.searchform input:hover {
+  border: 1px solid #dcdcdc;
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+}
+.wpcf7 input,
+.wpcf7 textarea,
+#comments input,
+#comments textarea {
+  outline: none !important;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+.wpcf7 .wpcf7-submit,
+#comments .form-submit input {
+  display: block;
+  min-width: 150px;
+  height: 35px;
+  margin: 0 auto;
+  background-color: #4599ff;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  text-transform: uppercase;
+}
+#comments .form-submit .submit {
+  border: 1px solid #eaeaea;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35;
+}
+#comments .form-submit .submit:hover {
+  background: #5aa7ff;
+  color: #abaeb3;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.wpcf7 .wpcf7-submit:hover {
+  border: 1px solid #5aa7ff;
+  background: #5aa7ff;
+  color: #abaeb3;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.wpcf7 .wpcf7-form-control-wrap {
+  position: relative;
+}
+.wpcf7 .wpcf7-not-valid-tip {
+  position: absolute;
+  right: 0;
+  color: #ff0004;
+  font-size: 12px;
+  text-transform: none;
+}
+.wpcf7 .wpcf7-validation-errors,
+.wpcf7 .wpcf7-mail-sent-ok {
+  padding: 10px;
+  text-transform: none;
+}
+.wpcf7 .wpcf7-validation-errors {
+  border: 1px solid #ffa6a6;
+  background-color: #eb32f2;
+}
+.wpcf7 .wpcf7-mail-sent-ok {
+  border: 1px solid #66b266;
+  background-color: #eff7ef;
+}
+#comments label {
+  font-size: 13px;
+  min-width: 100px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+#comments .comment-form-comment label,
+#comments .form-allowed-tags {
+  display: none;
+}
+#comments .comment-form-author input,
+#comments .comment-form-email input,
+#comments .comment-form-url input {
+  width: 40%;
+}
+#comments .comment-form-comment textarea {
+  width: 100%;
+  height: 150px;
+}
+#comments .comment-reply-title {
+  text-transform: uppercase;
+}
+#comments .comment-notes,
+#comments .logged-in-as {
+  font-size: 12px;
+}
+#comments .logged-in-as a:first-child {
+  color: #5aa7ff;
+  font-weight: 700;
+}
+.itu_widget {
+  margin-bottom: 50px;
+  background: #242526;
+  border-bottom: 1px solid #151516;
+  border-right: 1px solid #151516;
+  padding: 30px;
+  box-shadow: 1px 1px #abaeb3, 2px 2px #151516, 3px 3px #abaeb3, 4px 4px #151516;
+}
+
+.itu_widget .itu_widget_title {
+  text-align: center;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.itu_widget .itu_widget_title span {
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+  padding: 0 10px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.itu_widget .itu_widget_title span:after,
+.itu_widget .itu_widget_title span:before {
+  border-top: 1px solid #0866ff;
+}
+
+.itu_widget ul {
+  padding: 0;
+  list-style: none;
+}
+.itu_widget ul > li {
+  padding: 3px 7px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  font-size: 13px;
+  color: #999;
+}
+.itu_widget ul li:last-child {
+  border-bottom: none;
+}
+.itu_widget ul li a {
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.itu_widget ul li a:hover {
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.widgets-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.widgets-grid-layout img {
+  width: 100%; /* Adjust this as needed */
+  object-fit: cover;
+}
+
+.cat-item a {
+  display: inline-block;
+}
+.cat-item a:before {
+  font-family: "FontAwesome";
+  content: "\f105";
+  display: inline-block;
+  padding-right: 10px;
+  transition: transform 0.35s;
+  -moz-transition: transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+}
+.cat-item a:hover {
+  transition: transform 0.35s;
+  -moz-transition: transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+}
+.cat-item a:hover:before {
+  -moz-transform: translateX(5px);
+  -webkit-transform: translateX(5px);
+  transform: translateX(5px);
+  -moz-transition: transform 0.35s;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+.postform {
+  width: 100%;
+  padding: 3px 5px;
+  font-size: 13px !important;
+  outline: none;
+}
+.itu_widget .recentcomments {
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ececec;
+  font-size: 13px;
+  color: #999;
+}
+.itu_widget .recentcomments:last-child {
+  border-bottom: none;
+}
+.itu_widget .url {
+  color: #999;
+}
+.itu_widget .recentcomments > a {
+  display: block !important;
+}
+
+.itu_404 {
+  padding: 100px 0 200px 0;
+}
+
+.itu_footer_widget {
+  padding: 70px 0;
+  background-color: #eaeaea;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("/img/rc-bg-main.jpg");
+}
+.itu_footer_widget .itu_widget {
+  background: #242526;
+  padding: 15px 30px;
+  min-height: 400px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.issue_widget {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.issue_widget .issue_image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.issue_widget .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.issue_widget .issue_text {
+  text-align: center;
+  padding: 20px;
+}
+
+.issue_widget .issue_number {
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.issue_widget .issue_date {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 10px;
+  color: #dcdcdc;
+}
+
+.issue_widget .issue_btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 14px;
+  background-color: #0866ff;
+  border-radius: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.issue_widget .issue_btn:hover {
+  background-color: #004bb5;
+}
+
+.author_widget {
+  padding: 30px;
+  background: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author_widget .author_content {
+  text-align: center;
+  position: relative;
+}
+
+.author_widget .author_image {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.author_widget .author_name {
+  font-size: 24px;
+  font-weight: bold;
+  /* color: #333; */
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.author_widget .author_bio {
+  font-size: 16px;
+  /* color: #666; */
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.author_widget .author_btn {
+  display: block;
+  min-width: 150px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: #5aa7ff;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  text-transform: uppercase;
+}
+
+.author_widget .author_btn:hover {
+  background-color: #0866ff;
+}
+
+.community_widget {
+  background: #eaeaea;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.community_widget .community_description {
+  font-size: 16px;
+  /* color: #555; */
+  margin-bottom: 20px;
+}
+
+.community_widget .community_form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.community_widget .email_input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 30px 0 0 30px;
+  border: 1px solid #ccc;
+  outline: none;
+  flex: 1;
+  max-width: 250px;
+}
+
+.community_widget .subscribe_btn {
+  background-color: #0866ff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 0 30px 30px 0;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.community_widget .subscribe_btn:hover {
+  background-color: #004bb5;
+}
+
+.community_widget .social_icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.community_widget .social_icon {
+  color: #555;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.community_widget .social_icon:hover {
+  color: #0866ff;
+}
+
+.community_widget .fb_icon {
+  color: #3b5998;
+}
+
+.community_widget .twitter_icon {
+  color: #1da1f2;
+}
+
+.community_widget .insta_icon {
+  color: #c13584;
+}
+
+footer {
+  background-color: #1f2021;
+  color: #dfe1e6;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+footer a {
+  color: #dfe1e6;
+}
+
+.screen-reader-text {
+  display: none !important;
+}
+.searchform div {
+  display: table;
+  width: 100%;
+}
+.searchform input {
+  border: 1px solid #ececec;
+  border-radius: 0;
+  font-size: 11px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+}
+#s,
+#searchsubmit {
+  display: table-cell;
+}
+.searchform #s,
+.searchform #s-top {
+  -webkit-appearance: none;
+  padding: 1px 5px;
+  border-radius: 0;
+}
+.searchform.headform #s-top {
+  position: relative;
+  color: #444;
+  width: 30%;
+}
+.searchform.headform #searchsubmit-top {
+  float: none;
+  border: none;
+  margin-top: 1px;
+  background: none;
+  color: #999;
+  outline: none;
+}
+#searchsubmit {
+  background: #abaeb3;
+  text-transform: uppercase;
+  width: 30%;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+#searchsubmit:hover {
+  color: #abaeb3;
+}
+#s {
+  float: left;
+  width: 68%;
+  margin-right: 2px;
+}
+/* Container for the sidebar */
+.itu_widget_area {
+  position: sticky;
+  top: 0; /* Adjust this value if you need some space from the top */
+}
+
+/* Ensure the sidebar does not overlap other content */
+.itu_widget_area::after {
+  content: "";
+  display: block;
+  height: 1px; /* Adjust height if necessary */
+  margin-top: 20px; /* Adjust spacing if necessary */
+}
+
+.itu_widget .tagcloud:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.itu_widget .tagcloud a {
+  display: block;
+  float: left;
+  padding: 2px 5px;
+  margin-right: 2px;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  border: 1px solid #ececec;
+  background: #abaeb3;
+  line-height: 18px;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.itu_widget .tagcloud a:hover {
+  color: #abaeb3;
+  border: 1px solid #5aa7ff;
+  background: #5aa7ff;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+.itu_widget ul {
+  padding: 0;
+  margin: 0;
+}
+
+.itu_widget .itu_tweet {
+  font-size: 13px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+.itu_widget .itu_tweet:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.itu_widget .itu_tweet_content a {
+  color: #5aa7ff;
+}
+.itu_widget .itu_tweet_time a {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999;
+}
+
+.itu_widget .cff-wrapper .cff-item {
+  letter-spacing: 1px;
+  border: none !important;
+}
+.itu_widget .cff-wrapper .cff-text {
+  font-size: 14px;
+}
+.itu_widget .cff-wrapper a {
+  color: #5aa7ff;
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.itu_widget .cff-wrapper .cff-link-title a:hover {
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.itu_image_author_back {
+  background-position: center center;
+  background-size: cover !important;
+  position: relative;
+  height: 200px;
+  margin-bottom: 90px;
+}
+.itu_image_author_back .itu_image_author {
+  position: absolute;
+  bottom: -75px;
+  left: calc(50% - 75px);
+  width: 150px;
+  height: 150px;
+  background-position: 50% 50%;
+  background-size: cover;
+  border: 5px solid #abaeb3;
+}
+.itu_image_author.itu_round_img {
+  border-radius: 50%;
+}
+.itu_about_text {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.itu_search_container {
+  margin-bottom: 60px;
+}
+.itu_search_container .itu_post_holder,
+.itu_search_container .itu_post_holder {
+  padding: 0 !important;
+}
+.itu_search_container .itu_blog_post_cat,
+.itu_search_container .itu_blog_post_data_holder {
+  margin: 0;
+  font-size: 12px;
+}
+.itu_search_container .itu_blog_post_cat_holder {
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
+}
+.this_page {
+  margin-bottom: 60px;
+}
+.this_page .itu_blog_tag_holder {
+  float: right;
+}
+.this_page .itu_blog_post_cat_holder {
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.itu_blog_tag_holder {
+  position: relative;
+}
+
+.itu_blog_tag_holder,
+.itu_blog_comment_holder a,
+.itu_blog_tag_holder a {
+  letter-spacing: 1px;
+  color: #999;
+  text-transform: uppercase;
+  font-size: 10px;
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.itu_blog_comment_holder a,
+.itu_blog_tag_holder a {
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+
+ul.itu_many_tags,
+.itu_many_tags ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.itu_many_tags {
+  position: absolute;
+  right: -15px;
+  top: 3px;
+  z-index: 10;
+  padding-bottom: 2px;
+}
+.itu_many_tags > li > a {
+  display: inline-block;
+  padding: 0 15px 0 10px;
+  cursor: pointer;
+  text-align: right;
+}
+.itu_many_tags ul > li {
+  white-space: nowrap;
+  text-align: right;
+  line-height: 15px;
+  display: block;
+  padding: 2px 15px;
+  background-color: #1f2021;
+  border-bottom: 1px solid #1f2021;
+}
+.itu_many_tags > li:first-child {
+  white-space: nowrap;
+  text-align: right;
+}
+.itu_many_tags > li:first-child,
+.itu_many_tags > li > ul > li:last-child {
+  border: none;
+}
+ul.itu_many_tags ul {
+  display: none;
+  border-top: 1px solid #1f2021;
+}
+.this_page ul.itu_many_tags ul {
+  border-top: none;
+}
+ul.itu_many_tags > li:hover > ul {
+  display: block !important;
+}
+
+.itu_search_container
+  .itu_post_holder:nth-child(even)
+  .itu_blog_post_cat_holder {
+  left: 10px;
+}
+.itu_search_container
+  .itu_post_holder:nth-child(odd)
+  .itu_blog_post_cat_holder {
+  right: 10px;
+}
+.itu_search_head {
+  background-color: #242526;
+  padding: 30px 0;
+}
+.itu_search_head .itu_head_search {
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.itu_serch_res {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 36px;
+  color: #5aa7ff;
+}
+.comment-list li,
+.comment-list li ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.itu_com_header {
+  text-transform: uppercase;
+}
+.itu_com_avatar,
+.itu_com_holder {
+  display: table-cell;
+  vertical-align: top;
+}
+.itu_com_holder {
+  position: relative;
+  overflow: hidden;
+  font-size: 13px;
+  width: 10000px;
+}
+.itu_com_avatar {
+  padding-right: 20px;
+}
+.itu_com_avatar img {
+  border-radius: 50%;
+}
+.itu_com_author {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding-right: 10px;
+}
+.itu_com_data {
+  display: inline-block;
+  font-size: 12px;
+  color: #999;
+}
+.itu_com_edit {
+  padding-left: 5px;
+  font-size: 15px;
+}
+.itu_com_reply {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.itu_com_reply a,
+.comment-reply-title small a {
+  display: inline-block;
+  border: 1px solid #ececec;
+  padding: 0 10px;
+  text-transform: lowercase;
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+  float: right;
+}
+.itu_com_reply a:hover {
+  transition: border 0.35s;
+  -webkit-transition: border 0.35s;
+}
+.comment-reply-title {
+  font-size: 20px;
+}
+.comment-reply-title small {
+  font-size: 100%;
+}
+.comment-reply-title small a {
+  padding: 5px 10px;
+  margin-top: -5px;
+}
+.comment-body {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ececec;
+}
+.comment-body:last-child {
+  border: none;
+}
+.comment ul.children {
+  margin-left: 65px;
+}
+pre {
+  padding: 30px;
+  margin: 20px 0;
+  color: #fbfbfb;
+  background-color: #666;
+  border: none;
+  border-radius: 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  white-space: pre\9;
+}
+.alignleft {
+  float: left;
+  margin: 5px 20px 5px 0;
+}
+.alignright {
+  float: right;
+  margin: 5px 0 5px 20px;
+}
+.aligncenter {
+  margin: 0 auto;
+}
+
+.itu_footer {
+  padding: 30px 0;
+  text-align: center;
+}
+.itu_counts {
+  visibility: hidden;
+  position: absolute;
+}
+.itu_load_more {
+  content: "Load more posts";
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  width: 200px;
+  margin: 20px auto;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-style: normal;
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+
+.itu_load_more:hover {
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+
+.itu_load_more.disabled {
+  color: #a5a5a5 !important;
+  cursor: default;
+}
+select {
+  border: 1px solid #dfe1e6;
+  padding: 5px;
+  width: 100%;
+  background: #242526;
+}
+#wp-calendar {
+  width: 100%;
+}
+#wp-calendar caption {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  padding-bottom: 15px;
+}
+#wp-calendar tr,
+#wp-calendar th {
+  font-size: 12px;
+  text-align: center;
+}
+#wp-calendar thead th {
+  padding: 7px;
+  border: 1px solid #f5f5f5;
+}
+#wp-calendar tbody td {
+  padding: 7px;
+  background: #242526;
+  border: 1px solid #fdfdfd;
+  color: #999;
+}
+#wp-calendar tbody td:hover {
+  background: #fdfdfd;
+}
+#wp-calendar tbody .pad {
+  background: none;
+}
+#prev,
+#next {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+#next {
+  text-align: right;
+}
+.page_item_has_children {
+  position: relative;
+}
+
+.page_item_has_children > ul {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  display: none;
+  border: 5px solid #ececec;
+  border-top: 1px solid #ececec;
+  z-index: 10;
+  width: 90%;
+  background-color: #abaeb3;
+}
+.page_item:hover {
+  background-color: #f9f9f9;
+}
+.page_item a {
+  display: block;
+}
+.page_item_has_children:after {
+  font-family: "FontAwesome";
+  content: "\f105";
+  position: absolute;
+  top: 2px;
+  right: 5px;
+}
+.page_item_has_children:hover > ul {
+  display: block;
+}
+.itu_widget .menu {
+  text-align: left;
+  border: none;
+}
+.itu_widget .menu > li > a {
+  text-align: center;
+  display: block;
+}
+.itu_widget .menu ul ul {
+  top: 100% !important;
+  left: 10px !important;
+  width: 200px !important;
+}
+.itu_widget .menu li,
+.itu_widget .menu a {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.itu_flick,
+.itu_flick li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.itu_flick {
+  margin: 0 -1px;
+}
+.itu_flick li {
+  display: block;
+  float: left;
+  overflow: hidden;
+  width: 33.33333333%;
+  border: 1px solid #abaeb3 !important;
+  padding: 0 !important;
+}
+.itu_flick li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.itu_flick li a:after,
+.itu_instagram_widget_ul li a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background 0.35s;
+  -webkit-transition: background 0.35s;
+}
+
+.itu_flick li:hover a:after,
+.itu_instagram_widget_ul li:hover a:after {
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.35s;
+  -webkit-transition: background 0.35s;
+}
+.itu_flick li a img {
+  height: 100%;
+}
+.itu_instagram_widget_ul li {
+  display: block;
+  width: 25%;
+  float: left;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.itu_instagram_widget_ul li:first-child {
+  width: 75%;
+}
+.itu_instagram_widget_ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.itu_related_posts li {
+  padding: 0 !important;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 10px !important;
+}
+.itu_related_posts li:last-child {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.itu_related_posts li:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.itu_related_posts .itu_img-rel-post {
+  float: left;
+  width: 30%;
+  margin-right: 10px;
+}
+.itu_related_posts {
+  line-height: 15px;
+}
+.itu_related_posts .itu_date-rel-post {
+  font-size: 12px;
+  color: #999;
+}
+.itu_related_posts .itu_content-rel-post h6 {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
+  text-transform: capitalize;
+  margin: 3px 0;
+  height: 40px;
+  max-height: 40px;
+  overflow: hidden;
+  line-height: 20px;
+}
+.itu_related_posts .itu_com-rel-post {
+  font-size: 12px;
+}
+.wp-caption {
+}
+.wp-caption-text {
+}
+.gallery-caption {
+}
+.bypostauthor {
+}
+/*------------------------------------------------------------------
+[2. Menu]
+-------------------------------------------------------------------*/
+.menu-main-menu-container {
+  text-align: center;
+}
+.itu_menu_holder,
+.itu_header_menu {
+  background-color: #000;
+}
+.itu_menu_holder {
+  color: #abaeb3;
+  position: absolute;
+  z-index: 99;
+  padding: 5px 0;
+  border: 12px solid #1f2021;
+  border-top: none;
+  left: 50%;
+  min-width: 100px;
+  width: 120px;
+  white-space: nowrap;
+  text-align: center;
+}
+/* .itu_menu_holder {
+  color: #abaeb3;
+  position: absolute;
+  z-index: 99;
+  padding: 5px 0;
+  border: 12px solid #1f2021;
+  border-top: none;
+  top: 0; Position it at the top
+  left: 50%; 
+  transform: translateX(-50%); Offset by half its width
+  min-width: 120px;
+  width: 120px;
+  white-space: nowrap;
+  text-align: center;
+} */
+.itu_header_menu li a {
+  display: inline-block;
+  color: #abaeb3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 11px;
+  opacity: 0;
+  transition: all 0.35s;
+  text-align: center;
+}
+.itu_menu_button {
+  display: block;
+  color: #abaeb3;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.itu_header_menu {
+  padding-top: 20px;
+  display: none;
+  z-index: 999;
+  margin: 0px;
+  list-style: none;
+  background: #000;
+  color: #abaeb3;
+  text-align: center; /* Center the text in the menu items */
+  position: relative;
+}
+.itu_open_ul > a {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.itu_open_ul:after {
+  display: block;
+  content: "";
+  width: 50px;
+  margin: 20px auto;
+  height: 1px;
+  background: #eaeaea;
+}
+.itu_header_menu a {
+  color: #abaeb3;
+}
+.itu_header_menu a:hover {
+  color: #5aa7ff;
+}
+.itu_header_menu li:hover {
+  background: none;
+}
+.itu_header_menu ul {
+  display: block !important;
+  list-style: none;
+  padding: 0px;
+}
+
+.itu_search-pop-up,
+.itu_social-pop-up {
+  position: absolute;
+  top: 0;
+  display: none;
+  margin-top: -10px;
+  transition: opacity 0.5s, top 0.35s;
+  -webkit-transition: opacity 0.5s, top 0.35s;
+}
+.itu_search-pop-up {
+  left: 0;
+}
+.itu_social-pop-up {
+  right: 0;
+}
+.itu_search-pop-up .searchform.headform #s-top {
+  float: left;
+  width: 85%;
+}
+.itu_search-pop-up .searchform.headform #searchsubmit-top {
+  float: left;
+}
+.itu_menu.itu_cloned {
+  z-index: -1;
+}
+.itu_menu.itu_cloned_show {
+  z-index: 999;
+}
+.itu_menu.itu_cloned_show .itu_search-pop-up {
+  display: block;
+  top: 50%;
+  margin-top: -14px;
+  transition: opacity 0.5s, top 0.35s;
+  -webkit-transition: opacity 0.5s, top 0.35s;
+}
+.itu_menu.itu_cloned_show .itu_social-pop-up {
+  display: block;
+  top: 50%;
+  margin-top: -12px;
+  transition: opacity 0.5s, top 0.35s;
+  -webkit-transition: opacity 0.5s, top 0.35s;
+}
+.itu_button_menu {
+  width: 38px;
+  height: 38px;
+  background: none;
+  border: none;
+  border-right: 1px solid #ececec;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+.itu_button_menu span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 60%;
+  background: #999;
+  border-radius: 9px;
+  opacity: 1;
+  left: 20%;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+.itu_button_menu span:nth-child(1) {
+  top: 9px;
+}
+.itu_button_menu span:nth-child(2),
+.itu_button_menu span:nth-child(3) {
+  top: 17px;
+}
+.itu_button_menu span:nth-child(4) {
+  top: 25px;
+}
+.itu_button_menu.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+.itu_button_menu.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.itu_button_menu.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.itu_button_menu.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+/*------------------------------------------------------------------
+[4. Blog]
+-------------------------------------------------------------------*/
+
+.itu_legend {
+  font-family: "Lato", sans-serif;
+  line-height: 50px;
+  font-weight: 700;
+  font-style: normal;
+  color: #444;
+  font-size: 42px;
+}
+.itu_sub_legend {
+  font-family: "Lato", sans-serif;
+  line-height: 36px;
+  font-weight: normal;
+  font-style: normal;
+  color: #444;
+  font-size: 20px;
+}
+.itu_grid {
+  margin: 0 15px;
+}
+.item {
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+.item a {
+  text-decoration: none !important;
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.item a:hover {
+  color: #5aa7ff;
+  transition: color 0.35s;
+  -webkit-transition: color 0.35s;
+}
+.item .itu_post_holder:not(.quote_post):not(.link_post) {
+  background-color: #242526;
+}
+.itu_page_title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+.itu_media p {
+  margin: 0;
+}
+.head h2 {
+  padding: 0;
+  margin: 10px 0;
+  line-height: 30px;
+}
+.head .itu_ddate {
+  border: none;
+}
+.itu_grid_container .itu_post_holder:hover .flexslider img {
+  transform: none;
+}
+.this_page .itu_post_holder {
+  overflow: visible;
+  border-bottom: 1px solid #ececec;
+}
+.this_page .itu_blog_post_featuder_holder {
+  margin-bottom: 30px;
+}
+.dropcaps {
+  float: left;
+  color: #5aa7ff;
+  font-size: 75px;
+  line-height: 60px;
+  padding-top: 8px;
+  padding-right: 8px;
+  padding-left: 3px;
+  font-family: Georgia;
+}
+.post_audio iframe {
+  width: 100%;
+  border: none;
+  border: 0;
+}
+
+.itu_author_box {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 13px;
+  padding: 20px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+.itu_author_ava {
+  display: table-cell;
+  vertical-align: top;
+  padding-right: 15px;
+}
+.itu_author_ava img {
+  border-radius: 50%;
+}
+.itu_author_text {
+  display: table-cell;
+  vertical-align: top;
+}
+.itu_author_social {
+  float: right;
+  margin-top: 5px;
+}
+.itu_author_social a {
+  color: #ccc;
+  margin-left: 8px;
+}
+.itu_author_title {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.embed-responsive.embed-responsive-21by9 {
+  padding-bottom: 42.85%;
+}
+
+.embed-responsive.embed-responsive-1by1 {
+  padding-bottom: 100%;
+}
+.itu_img_grid,
+.itu_simple_image {
+  overflow: hidden;
+}
+
+.itu_more_holder {
+  text-align: center;
+  margin: 20px 0 10px;
+}
+.more-link {
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #999;
+  line-height: 20px;
+}
+.more-link:after {
+  content: "";
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 4px;
+  border-bottom: 2px solid #0866ff;
+  transition: all 0.35s;
+}
+.more-link:hover:after {
+  width: 50%;
+  transition: all 0.35s;
+}
+
+.itu_blog_post_content_holder .text_holder {
+  letter-spacing: 1px;
+}
+
+.this_page .itu_blog_post_content_holder {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+.itu_blog_post_title_holder .blog_title {
+  text-transform: uppercase;
+}
+.this_page .quote_post .itu_media {
+  background: #5aa7ff;
+}
+
+.this_page .head {
+  position: relative;
+  text-align: center;
+  border: none;
+  padding: 40px 0;
+  overflow: hidden;
+}
+.page .this_page .head {
+  padding: 0;
+  margin-bottom: 40px;
+}
+.this_page .head .itu_up_title {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  padding: 0 20px 0 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.text-overflow-center {
+  font-family: Roboto;
+  line-height: 60px;
+  letter-spacing: 10px;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 57px;
+}
+.this_page .head .itu_up_title .text-overflow-center {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+}
+.this_page .blog_title {
+  margin: 5px 0;
+}
+.this_page .itu_blog_post_cat,
+.this_page .itu_blog_post_cat a {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #999;
+}
+.itu_blog_post_cat .itu_separate,
+.this_page .itu_blog_post_cat .itu_separate {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.quote_post .itu_media,
+.link_post .itu_media {
+  position: relative;
+  background: #5aa7ff;
+}
+.quote_post .itu_media:before,
+.link_post .itu_media:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  height: auto;
+  margin: 30px auto;
+  z-index: 2;
+}
+.quote_post .itu_media.itu_acc_dark:before {
+  border-top: 2px solid #abaeb3;
+  border-bottom: 2px solid #abaeb3;
+}
+.quote_post .itu_media.itu_acc_light:before {
+  border-top: 2px solid #444;
+  border-bottom: 2px solid #444;
+}
+
+.quote_post .itu_media.itu_acc_dark:after,
+.quote_post .itu_media.itu_acc_light:after,
+.link_post .itu_media.itu_acc_dark:after,
+.link_post .itu_media.itu_acc_light:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+.quote_post .itu_media.itu_acc_dark:after,
+.link_post .itu_media.itu_acc_dark:after {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.quote_post .itu_media.itu_acc_light:after,
+.link_post .itu_media.itu_acc_light:after {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.quote_post .text_holder {
+  font-family: "Roboto Slab";
+  text-align: center;
+  line-height: 36px;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+}
+.quote_post .text_holder,
+.link_post .text_holder {
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+.quote_post .text_holder:before,
+.this_page .quote_post .text_holder:before,
+.link_post .text_holder:before,
+.this_page .link_post .text_holder:before,
+.link_post .itu_blog_post_cat_holder:before {
+  font-family: "FontAwesome";
+  display: block;
+  content: "\f10d";
+  font-style: normal;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+}
+.this_page .link_post .itu_blog_post_cat_holder:before {
+  display: none;
+}
+.link_post .itu_blog_post_cat_holder:before {
+  top: -20px;
+}
+.link_post .text_holder:before,
+.this_page .link_post .text_holder:before,
+.link_post .itu_blog_post_cat_holder:before {
+  content: "\f0c1";
+}
+
+.quote_post .itu_acc_dark .text_holder,
+.quote_post .itu_acc_dark .author a,
+.link_post .itu_acc_dark .text_holder,
+.link_post .itu_acc_dark .itu_blog_post_cat,
+.link_post .itu_acc_dark .text_holder a,
+.link_post .itu_acc_dark .text_holder h3 {
+  color: #abaeb3;
+}
+.quote_post .itu_acc_light .text_holder,
+.quote_post .itu_acc_light .author a,
+.link_post .itu_acc_light .text_holder,
+.link_post .itu_acc_light .itu_blog_post_cat,
+.link_post .itu_acc_light .text_holder a,
+.link_post .itu_acc_light .text_holder h3 {
+  color: #444;
+}
+
+.this_page .quote_post .text_holder,
+.this_page .link_post .text_holder {
+  position: relative;
+  margin-top: 0;
+  padding: 100px 60px 80px 60px;
+  font-style: italic;
+  z-index: 2;
+  width: 90%;
+  margin: 0 auto;
+}
+.this_page .link_post .text_holder {
+  text-align: center;
+  font-style: normal;
+}
+
+.this_page .link_post .blog_title_a {
+  font-size: 13px;
+}
+
+.this_page .quote_post .author,
+.quote_post .author {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 20px;
+}
+.quote_post .author a:hover {
+  color: inherit;
+}
+.this_page .comments-area {
+  margin: 40px 0;
+}
+
+.itu_prev_next {
+  margin-top: 40px;
+}
+.itu_prev_next .itu_prev_post,
+.itu_prev_next .itu_next_post {
+  position: relative;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid #eaeaea;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+}
+.itu_prev_next .itu_prev_post:after,
+.itu_prev_next .itu_next_post:after {
+  font-family: "FontAwesome";
+  display: block;
+  position: absolute;
+  top: 10px;
+}
+.itu_prev_next .itu_prev_post:after {
+  content: "\f178";
+  right: 15px;
+}
+.itu_prev_next .itu_next_post:after {
+  content: "\f177";
+  left: 15px;
+}
+.itu_prev_next .itu_prev_post {
+  float: right;
+  padding-right: 40px;
+}
+.itu_prev_next .itu_next_post {
+  float: left;
+  padding-left: 40px;
+}
+.itu_prev_next .itu_prev_post:hover,
+.itu_prev_next .itu_next_post:hover {
+  background-color: #5aa7ff;
+  color: #abaeb3;
+  border: 1px solid #5aa7ff;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+}
+
+.itu_share_holder {
+  position: absolute;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 14px;
+  padding: 0 3px;
+  background: #abaeb3;
+  border: 1px dotted #eaeaea;
+}
+.itu_share_holder .itu_share_cont {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+}
+.itu_share_holder .itu_share_button {
+  text-transform: uppercase;
+  color: #444;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+.itu_share_holder .itu_share_cont a {
+  background-color: #abaeb3;
+  height: 30px;
+  width: 30px;
+  color: #4599ff;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 3px;
+  text-align: center;
+  line-height: 30px;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.itu_share_holder .itu_share_cont a:hover {
+  color: #5aa7ff;
+  transition: all 0.35s;
+  -webkit-transition: all 0.35s;
+}
+.itu_share_cont.show {
+  display: block; /* Or whatever display property you need */
+}
+.itu_share_holder ul > li > a:last-child {
+  margin-right: 0;
+}
+.this_page .flexslider {
+  margin: 30px 0;
+}
+blockquote {
+  font-family: Roboto Slab;
+  position: relative;
+  font-size: 18px;
+  line-height: 26px;
+  color: #999;
+  font-style: italic;
+  padding: 45px 60px;
+  text-align: center;
+  border-left: none;
+  letter-spacing: 1px;
+  margin: 30px 0 !important;
+}
+blockquote p {
+  margin: 0;
+}
+blockquote:before {
+  font-family: "FontAwesome";
+  content: "\f10d";
+  padding-top: 10px;
+  font-style: normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  border-top: 2px solid #0866ff;
+  border-bottom: 2px solid #0866ff;
+}
+blockquote:after {
+  font-family: "FontAwesome";
+  display: block;
+  content: "\f10e";
+  font-style: normal;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.itu_svg_warp {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 30px;
+}
+.itu_svg_warp a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: none;
+  -webkit-transition: none;
+}
+.shape {
+  stroke-dasharray: 60 250;
+  stroke-dashoffset: -230;
+  stroke-width: 4px;
+  fill: transparent;
+  stroke: #ececec;
+  transition: stroke 0.7s, stroke-width 0.7s, stroke-dashoffset 0.7s,
+    stroke-dasharray 0.7s;
+  -webkit-transition: stroke 0.7s, stroke-width 0.7s, stroke-dashoffset 0.7s,
+    stroke-dasharray 0.7s;
+}
+.text {
+  top: -37px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  font-weight: 700;
+  text-align: center;
+}
+.itu_svg_warp:hover .shape {
+  stroke-width: 2px;
+  stroke-dashoffset: 0;
+  stroke-dasharray: 400;
+  stroke: #0866ff;
+}
+.itu_svg_warp:hover .text,
+.itu_com_reply a:hover {
+  color: #444 !important;
+}
+.itu_pg {
+  margin-bottom: 30px;
+}
+.itu_pg .page-numbers {
+  display: inline-block;
+  padding: 0 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  transition: background 0.35s, color 0.35s;
+  -webkit-transition: background 0.35s, color 0.35s;
+  -moz-transition: background 0.35s, color 0.35s;
+}
+.itu_pg .page-numbers:hover {
+  background: #5aa7ff;
+  color: #abaeb3;
+  transition: background 0.35s, color 0.35s;
+  -webkit-transition: background 0.35s, color 0.35s;
+  -moz-transition: background 0.35s, color 0.35s;
+}
+.itu_pg .page-numbers.current,
+.itu_logo h2 span {
+  border-bottom: 2px solid #0866ff;
+}
+.itu_pg .page-numbers:hover,
+.itu_box_holder .itu_search_submit:hover,
+.itu_box_holder .itu_box_share_holder a:hover,
+#comments .form-submit .submit:hover,
+.itu_widget .tagcloud a:hover,
+.quote_post .itu_media,
+.this_page .quote_post .itu_media,
+.wpcf7 .wpcf7-submit:hover,
+#searchsubmit:hover,
+.itu_prev_next .itu_prev_post:hover,
+.itu_prev_next .itu_next_post:hover {
+  background-color: #0866ff;
+}
+.itu_box_holder .itu_search_input:hover,
+.itu_box_holder .itu_search_submit:hover,
+.itu_box_holder .itu_box_share_holder a:hover,
+.wpcf7 .wpcf7-submit:hover,
+.itu_widget .tagcloud a:hover,
+.wpcf7 input:hover,
+.wpcf7 textarea:hover,
+#comments input:hover,
+#comments textarea:hover,
+#comments .form-submit .submit:hover,
+.itu_com_reply a:hover,
+.searchform input:hover,
+.itu_prev_next .itu_prev_post:hover,
+.itu_prev_next .itu_next_post:hover {
+  border: 1px solid #0866ff;
+}
+
+.itu_owl-holder {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+.itu_owl-holder img {
+  transition: transform 0.15s ease-in-out;
+  -webkit-transition: -webkit-transform 0.15s ease-in-out;
+}
+.owl-item:hover .itu_owl-holder img {
+  -webkit-transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transform: scale(1.1);
+}
+.itu_owl-holder .itu_owl-content::before,
+.itu_owl-holder .itu_owl-content::after {
+  pointer-events: none;
+}
+.itu_owl-holder .itu_owl-content::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.itu_owl-holder .itu_owl-content,
+.itu_owl-holder .itu_owl-content > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.itu_owl-holder .itu_owl-content > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+.itu_owl-holder .itu_owl-content-holder {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 15px;
+}
+.itu_owl-holder .itu_owl-content-holder:after {
+  content: "";
+  display: block;
+  width: 10%;
+  margin: 0 auto;
+  height: 2px;
+  background-color: #abaeb3;
+  margin-top: 10px;
+  transition: width 0.15s;
+  -webkit-transition: width 0.15s;
+  -moz-transition: width 0.15s;
+}
+.owl-item:hover .itu_owl-holder .itu_owl-content-holder:after {
+  width: 15%;
+  transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -webkit-transition: width 0.2s;
+}
+.itu_owl-holder .itu_owl-date {
+  color: #fff;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.itu_owl-holder h2 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.itu_post_carusel .owl-carousel {
+  margin-bottom: 0;
+}
+.owl-controls {
+  display: none !important;
+}
+.owl-theme .owl-dots .owl-dot span {
+  border-radius: 0;
+  height: 5px;
+  width: 20px;
+  background: none;
+  border: 1px solid #eaeaea;
+}
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #eaeaea;
+  border: 1px solid transperent;
+}
+/*------------------------------------------------------------------
+[5. Responsive]
+-------------------------------------------------------------------*/
+/* Smartphones (portrait and landscape) ----------- */
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .itu_logo img {
+    max-width: 80%; /* Scale down further for small screens */
+    display: block; /* Ensures the logo behaves as a block-level element */
+    margin: 0 auto; /* Center the logo */
+  }
+  .itu_site_holder {
+    margin: 10px;
+  }
+
+  .itu_box_holder .itu_box_share_holder a {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .this_page .comments-area {
+    margin: 40px 15px;
+  }
+
+  .itu_sidebar_pad {
+    padding-right: 15px !important;
+  }
+
+  .itu_footer_widget .itu_widget {
+    margin-bottom: 20px;
+  }
+
+  .itu_box_holder .itu_search_input {
+    width: 50%;
+  }
+
+  .itu_share_holder a {
+    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 980px) {
+  .itu_site_holder {
+    margin: 12px;
+  }
+
+  /* .row {
+    display: block;
+  }
+
+  .col-md-8 {
+    max-width: 100%;
+  }
+
+  .col-md-4 {
+    max-width: 100%;
+  } */
+
+  .container {
+    width: 740px;
+  }
+
+  .itu_sidebar_pad {
+    padding: 0 15px;
+  }
+
+  .this_page .comments-area {
+    margin: 40px 15px;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1200px) {
+  .itu_site_holder {
+    margin: 12px;
+  }
+
+  .itu_sidebar_pad {
+    padding-right: 30px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 767px) {
+  .itu_svg_warp a:hover {
+    border: 1px solid #0866ff;
+  }
+}
+
+@media only screen and (min-device-width: 767px) and (max-device-width: 980px) {
+  .itu_svg_warp a:hover {
+    border: 1px solid #0866ff;
+  }
+}
+
+.comment-reply-title small a {
+  color: #444;
+}

@@ -1,0 +1,372 @@
+jQuery.noConflict();
+jQuery(document).ready(function ($) {
+  const postsPerPage = 10; // Number of posts per page
+
+  // Function to load header
+  function loadHeader() {
+    return $.Deferred(function (deferred) {
+      $("#header-placeholder").load("/header.html", function () {
+        deferred.resolve();
+      });
+    }).promise();
+  }
+
+  // Function to load overlays
+  function loadOverlays() {
+    return $.Deferred(function (deferred) {
+      $("#overlays-placeholder").load("/overlays.html", function () {
+        deferred.resolve();
+      });
+    }).promise();
+  }
+
+  // Function to load sidebar
+  function loadSidebar() {
+    return $.Deferred(function (deferred) {
+      $("#sidebar-placeholder").load("/sidebar.html", function () {
+        deferred.resolve();
+      });
+    }).promise();
+  }
+
+  // Function to load widgets
+  function loadWidgets() {
+    return $.Deferred(function (deferred) {
+      $("#widgets-placeholder").load("/widgets.html", function () {
+        deferred.resolve();
+      });
+    }).promise();
+  }
+
+  // Function to load carousel
+  function loadCarousel() {
+    return $.Deferred(function (deferred) {
+      $("#carousel-placeholder").load("/carousel.html", function () {
+        if ($("#carousel-placeholder").find(".owl-carousel").length) {
+          initializeOwlCarousel();
+        }
+        deferred.resolve();
+      });
+    }).promise();
+  }
+
+  // Function to initialize Owl Carousel
+  function initializeOwlCarousel() {
+    var owl = $(".owl-carousel");
+    owl.owlCarousel({
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      nav: false,
+      dots: false,
+      margin: 2,
+      responsive: {
+        0: { items: 1 },
+        600: { items: 2 },
+        800: { items: 3 },
+        1200: { items: 3 },
+      },
+    });
+  }
+
+  // Function to initialize the blog feed
+  function initializeBlogFeed() {
+    return $.Deferred(function (deferred) {
+      $.when($.get("/blog_posts.html"), $.get("/all_tags.html"))
+        .done(function (blogData, tagsData) {
+          const $tempDiv = $("<div>").html(blogData[0]);
+          const $allPosts = $tempDiv.find(".blog-post");
+
+          const $tagsDiv = $("<div>").html(tagsData[0]);
+          const $allTags = $tagsDiv.find(".tag");
+
+          if ($allPosts.length > 0) {
+            const totalPosts = $allPosts.length;
+            const totalPages = Math.ceil(totalPosts / postsPerPage);
+            renderPosts($allPosts, $allTags, 1);
+            generatePagination(totalPages);
+            $("#pagination").on("click", ".page-numbers", function (e) {
+              e.preventDefault();
+              const pageNumber = $(this).text();
+              renderPosts($allPosts, $allTags, pageNumber);
+              $("html, body").animate(
+                { scrollTop: $("#blog-feed").offset().top },
+                600
+              );
+            });
+
+            // Resolve the deferred object
+            deferred.resolve();
+          } else {
+            deferred.reject();
+          }
+        })
+        .fail(function () {
+          deferred.reject();
+        });
+    }).promise();
+  }
+
+  // Function to render posts for a specific page
+  function renderPosts(posts, tags, pageNumber) {
+    const start = (pageNumber - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    const $postsToShow = posts.slice(start, end);
+
+    $("#blog-feed").empty();
+
+    $postsToShow.each(function () {
+      const postTitle = $(this).data("title");
+      const postDate = $(this).data("date");
+      const postCategory = $(this).data("category");
+      const postUrl = $(this).data("url");
+      const postImage = $(this).data("image");
+      const postExcerpt = $(this).data("excerpt");
+
+      // Randomly select two tags
+      const tagElements = getRandomTags(tags, 2);
+
+      // Generate the HTML for the blog post
+      const postHtml = `
+      <div class="col-md-12 item">
+        <div class="itu_post_holder">
+          <div class="head">
+            <div class="itu_up_title">
+              <span class="text-overflow-center">${postTitle}</span>
+            </div>
+            <div class="itu_blog_post_cat">
+              <span class="itu_ddate">${postDate}</span>
+              <span class="itu_separate">|</span>
+              <span class="itu_category">${postCategory}</span>
+            </div>
+            <div class="itu_blog_post_title_holder">
+              <h3 class="blog_title">
+                <a class="blog_title_a" href="${postUrl}">${postTitle}</a>
+              </h3>
+            </div>
+          </div>
+          <div class="itu_media">
+            <div class="itu_blog_post_featuder_holder text-center">
+              <a href="${postUrl}" title="${postTitle}">
+                <img class="img-responsive" src="${postImage}" alt="${postTitle}" />
+              </a>
+            </div>
+          </div>
+          <div class="itu_blog_post_content_holder">
+            <div class="text_holder">
+              <p>${postExcerpt}</p>
+            </div>
+            <div class="itu_blog_post_cat_holder">
+              <span class="itu_blog_comment_holder">
+                <a href="${postUrl}#disqus_thread">Link</a>
+              </span>
+              <span class="itu_blog_tag_holder hidden-xs">
+                <ul class="itu_many_tags">
+                  <li><i class="fa fa-angle-down"></i><a>Etiquetas</a>
+                    <ul>
+                      ${tagElements}
+                    </ul>
+                  </li>
+                </ul>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+      $("#blog-feed").append(postHtml);
+    });
+  }
+
+  // Function to generate pagination controls
+  function generatePagination(totalPages) {
+    let paginationHtml = '<div class="pagination-container">';
+    paginationHtml += '<span class="itu_counts">';
+    paginationHtml += `<span id="itu_masorny_posts_per_page">${postsPerPage}</span> / `;
+    paginationHtml += `<span id="itu_max_masorny_posts">${
+      totalPages * postsPerPage
+    }</span>`;
+    paginationHtml += "</span>";
+    paginationHtml += '<div class="itu_pg">';
+
+    for (let i = 1; i <= totalPages; i++) {
+      paginationHtml += `<a class="page-numbers" href="/?paged=${i}">${i}</a>`;
+      if (i < totalPages) {
+        paginationHtml += " ";
+      }
+    }
+
+    paginationHtml += '<a class="next page-numbers" href="/?paged=2">Next</a>';
+    paginationHtml += "</div>";
+    paginationHtml += "</div>";
+
+    $("#pagination").html(paginationHtml);
+  }
+
+  // Function to get random tags
+  function getRandomTags(tags, count) {
+    const shuffledTags = tags.sort(() => 0.5 - Math.random());
+    const selectedTags = shuffledTags.slice(0, count);
+    let tagHtml = "";
+
+    selectedTags.each(function () {
+      const tagName = $(this).data("name");
+      const tagUrl = $(this).data("url");
+
+      tagHtml += `<li><a href="${tagUrl}" rel="tag">${tagName}</a></li>`;
+    });
+
+    return tagHtml;
+  }
+
+  // Call the initializeBlogFeed function and load the Disqus script after completion
+  initializeBlogFeed().done(function () {
+    // Create and insert the Disqus script tag dynamically after blog feed is ready
+    const disqusScript = document.createElement("script");
+    disqusScript.id = "dsq-count-scr";
+    disqusScript.src = "//relatocorto.disqus.com/count.js";
+    disqusScript.async = true;
+    document.body.appendChild(disqusScript);
+  });
+
+  // Function to initialize the menu
+  function initializeMenu() {
+    var ww = adjustMenuHolder();
+    $(".itu_menu_holder").on(
+      "click",
+      ".itu_menu_button.itu_active",
+      function () {
+        $(".itu_header_menu li").removeClass("itu_open_ul one_click");
+        $(this).text("Menu");
+        $(".itu_header_menu").slideToggle(300);
+        $(this).removeClass("itu_active");
+        $(".itu_menu_holder").animate(
+          { marginLeft: -ww, width: ww * 2 },
+          300,
+          function () {
+            $(".itu_header_menu li a").css("opacity", 0);
+          }
+        );
+      }
+    );
+
+    $(".itu_menu_holder").on(
+      "click",
+      ".itu_menu_button:not(.itu_active)",
+      function () {
+        $(this).text("Cerrar").addClass("itu_active");
+        $(".itu_menu_holder ul").show(0);
+        var maxWidth = Math.max.apply(
+          null,
+          $(".itu_header_menu li a")
+            .map(function () {
+              return $(this).outerWidth(true);
+            })
+            .get()
+        );
+        maxWidth += 150;
+        $(".itu_menu_holder ul").hide(0);
+        $(".itu_header_menu").slideToggle(300);
+        $(".itu_menu_holder").animate(
+          { marginLeft: -maxWidth / 2, width: maxWidth },
+          300
+        );
+        $(".itu_header_menu li a").each(function (index) {
+          setTimeout(
+            function (el) {
+              el.css("opacity", 1);
+            },
+            index * 30,
+            $(this)
+          );
+        });
+      }
+    );
+
+    $(".itu_header_menu > li").on("click", "a", function (e) {
+      if (
+        $(this).parent().has("ul").length > 0 &&
+        !$(this).parent().hasClass("one_click")
+      ) {
+        $(this).parent().children("ul").slideToggle(300);
+        $(this).parent().toggleClass("itu_open_ul");
+        if ($(this).attr("href") != "#") {
+          $(this).parent().toggleClass("one_click");
+        }
+        e.preventDefault();
+      }
+    });
+  }
+
+  // Function to initialize search and social
+  function initializeSearchAndSocial() {
+    $(".itu_search").on("click", function () {
+      $("#itu_box_search.itu_box_overlay").addClass("itu_box_open_s");
+      $(".itu_site_holder").addClass("itu_box_open");
+    });
+
+    $("#itu_box_search .itu_close, #itu_box_search .itu_close_over").on(
+      "click",
+      function () {
+        $(".itu_box_overlay").removeClass("itu_box_open_s");
+        $(".itu_site_holder").removeClass("itu_box_open");
+      }
+    );
+
+    $(".itu_social").on("click", function () {
+      $("#itu_box_social.itu_box_overlay").addClass("itu_box_open_s");
+      $(".itu_site_holder").addClass("itu_box_open");
+    });
+
+    $("#itu_box_social .itu_close, #itu_box_social .itu_close_over").on(
+      "click",
+      function () {
+        $("#itu_box_social.itu_box_overlay").removeClass("itu_box_open_s");
+        $(".itu_site_holder").removeClass("itu_box_open");
+      }
+    );
+  }
+
+  // Adjust the width of the menu holder
+  function adjustMenuHolder() {
+    var ww = $(".itu_menu_holder").outerWidth() / 2;
+    $(".itu_menu_holder").css({ marginLeft: -ww, width: ww * 2 });
+    return ww;
+  }
+
+  // Load dynamic content and initialize scripts in sequence
+  $.when(loadHeader(), loadOverlays(), loadSidebar(), loadWidgets())
+    .done(function () {
+      // Initialize the menu after all components are loaded
+      initializeMenu();
+
+      // Initialize the carousel if present
+      loadCarousel()
+        .done(function () {
+          // Initialize the blog feed if present
+          initializeBlogFeed()
+            .done()
+            .fail(function (error) {
+              console.error(
+                "An error occurred while initializing the blog feed:",
+                error
+              );
+            });
+        })
+        .fail(function (error) {
+          console.error("An error occurred while loading the carousel:", error);
+        });
+
+      // Initialize search and social after overlays are loaded
+      initializeSearchAndSocial();
+    })
+    .fail(function (error) {
+      console.error("An error occurred while loading dynamic content:", error);
+    });
+  // Get the current year
+  const currentYear = new Date().getFullYear();
+  // Set the year in the span with id 'copyright-year'
+  document.getElementById("copyright-year").textContent = currentYear;
+});
