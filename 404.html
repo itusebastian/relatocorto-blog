@@ -71,7 +71,7 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
 
     <!-- External Scripts -->
     <script
@@ -95,6 +95,7 @@
       defer
     ></script>
     <script src="/js/scripts.js" defer></script>
+    <script src="/js/navigation.js"></script>
   </head>
   <body>
     <!-- Preloader -->
@@ -107,160 +108,46 @@
       </div>
     </div>
 
-    <!-- Search Overlay -->
-    <div id="itu_box_search" class="itu_box_overlay">
-      <div class="itu_close_over"></div>
-      <div class="itu_box_holder">
-        <!-- Title -->
-        <h3 class="itu_box_title">El Renacer de RelatoCorto</h3>
-
-        <!-- Author Bio -->
-        <div class="itu_author_bio itu_about_text">
-          <p>
-            RelatoCorto comenzó como un espacio donde decidí compartir mi
-            filosofía, un lugar para que otros supieran lo que pienso, lo que
-            descubro. Con el tiempo, esta página también me reveló la belleza de
-            compartir relatos con el mundo, y me di cuenta de que hay otros como
-            yo, capaces de disfrutar de estas historias.
-          </p>
-
-          <p>
-            Los giros de la vida me han llevado a cambiar de rumbo. Ahora,
-            RelatoCorto tiene un nuevo hogar en GitHub. Sin embargo, uno de los
-            costos de esta mudanza será despedirnos de la base de datos, lo que
-            significa que mis antiguos relatos serán desterrados de las nubes.
-            Pero esto también les ofrece la oportunidad de comenzar de nuevo
-            conmigo.
-          </p>
-
-          <p>
-            Esta decisión me ha mostrado lo valioso que es renacer, y por eso,
-            mis relatos tendrán ahora un tiempo limitado antes de desaparecer.
-          </p>
-
-          <p>Gracias por ser parte de este viaje.</p>
-        </div>
-
-        <!-- Close Button -->
-        <button type="button" class="itu_close">Cerrar</button>
-      </div>
-    </div>
-
-    <!-- Social Follow Overlay -->
-    <div id="itu_box_social" class="itu_box_overlay">
-      <div class="itu_close_over"></div>
-      <div class="itu_box_holder">
-        <!-- Title -->
-        <h3 class="itu_box_title">Gratitud y Reflexiones</h3>
-
-        <!-- Agradecimientos -->
-        <div class="itu_author_bio itu_about_text">
-          <p>
-            La vida me ha dado justo lo que necesito y por eso estoy agradecido.
-            Los frutos de mi filosofía han cambiado mi vida por completo. Dejé
-            la oscuridad del destierro para ahora sentarme con orgullo en medio
-            de todo. La contribución que me han dado en estos días y años es
-            invaluable. Sus comentarios y recomendaciones cambiaron mi vida. De
-            ustedes solo necesito un poco de amor. Gracias.
-          </p>
-
-          <p>
-            Aunque sí sus corazones prefieren, aquí me pueden invitar una taza
-            de café.
-          </p>
-        </div>
-
-        <!-- Social Links -->
-        <div class="itu_box_share_holder">
-          <a href="https://www.buymeacoffee.com/itusebastian" target="_blank">
-            <i class="fa-solid fa-mug-saucer"></i>
-          </a>
-          <!-- <a href="https://www.patreon.com/itusebastian" target="_blank">
-            <i class="fab fa-patreon"></i>
-          </a> -->
-        </div>
-
-        <!-- Close Button -->
-        <button type="button" class="itu_close">Cerrar</button>
-      </div>
-    </div>
+    <!-- Overlays Placeholder -->
+    <div id="overlays-placeholder"></div>
 
     <!-- Site Holder -->
     <div class="itu_site_holder">
       <header>
-        <div class="itu_header_background">
-          <div class="container">
-            <div class="row text-center">
-              <div class="col-4">
-                <div class="itu_search">
-                  <a href="#" title="">Explorar</a>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="itu_menu-top">
-                  <div class="itu_menu_holder">
-                    <a href="#" class="itu_menu_button">Menú</a>
-                    <nav class="itu_header_menu">
-                      <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Acerca de</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contacto</a></li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="itu_social">
-                  <a href="#" title="" class="itu_share_button">Descubrir</a>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="itu_logo">
-                  <a href="/">
-                    <img
-                      class="img-responsive"
-                      src="img/logo-rc-gray.png"
-                      alt="Website Logo"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="carousel-placeholder"></div>
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
       </header>
-    </div>
-    <div class="this_page">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="itu_404">
-              <h1 class="text-center">Lo sentimos, error 404</h1>
-              <h2 class="text-center">
-                No se pudo encontrar la página que estás buscando.
-              </h2>
-              <p class="text-center">
-                Utiliza el menú de navegación para encontrar la página que
-                buscabas.
-              </p>
-              <div class="text-center">
-                <a href="/" class="btn btn-primary">Ir a la página de inicio</a>
+
+      <!-- Main Content -->
+      <div class="this_page">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="itu_404">
+                <h1 class="text-center">Lo sentimos, error 404</h1>
+                <h2 class="text-center">
+                  No se pudo encontrar la página que estás buscando.
+                </h2>
+                <p class="text-center">
+                  Utiliza el menú de navegación para encontrar la página que
+                  buscabas.
+                </p>
+                <div class="text-center">
+                  <a href="/" class="btn btn-primary">Ir a la página de inicio</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="itu_footer_widget">
-        <div class="container">
-          <!-- Widgets Placeholder -->
-          <div id="widgets-placeholder" class="row"></div>
-        </div>
+      <div class="gr_post_carusel">
+        <div id="carousel-placeholder"></div>
+      </div>
+    </div>
+    <div class="itu_footer_widget">
+      <div class="container">
+        <!-- Widgets Placeholder -->
+        <div id="widgets-placeholder" class="row"></div>
       </div>
     </div>
     <!-- Footer -->
@@ -275,3 +162,4 @@
     </footer>
   </body>
 </html>
+
