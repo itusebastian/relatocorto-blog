@@ -1,9 +1,10 @@
+# .github/workflows/deploy.yml
 name: Deploy Website to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main # Adjust if you're using a different branch
 
 jobs:
   build-and-deploy:
@@ -13,29 +14,14 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      # Set SEARCH_ENGINE_ID as an environment variable
-      - name: Set SEARCH_ENGINE_ID environment variable
-        run: echo "SEARCH_ENGINE_ID=${{ secrets.SEARCH_ENGINE_ID }}" >> $GITHUB_ENV
-
       # Inject SEARCH_ENGINE_ID into search.html
       - name: Inject SEARCH_ENGINE_ID into search.html
         run: |
-          sed -i 's/SEARCH_ENGINE_ID_PLACEHOLDER/$SEARCH_ENGINE_ID/g' search.html
-
-      # Verify the injection worked
-      - name: Verify SEARCH_ENGINE_ID injection
-        run: cat search.html
-
-      # Setup Git for deployment
-      - name: Setup Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          sed -i 's/SEARCH_ENGINE_ID_PLACEHOLDER/${{ secrets.SEARCH_ENGINE_ID }}/g' search.html
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ # Make sure this is the correct directory
-          force_orphan: true
+          publish_dir: ./ # Adjust if your static files are in a different directory
