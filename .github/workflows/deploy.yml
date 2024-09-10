@@ -14,6 +14,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
+      # Inject SEARCH_ENGINE_ID into search.html
       - name: Inject SEARCH_ENGINE_ID into search.html
         run: |
           sed -i 's/SEARCH_ENGINE_ID_PLACEHOLDER/${{ secrets.SEARCH_ENGINE_ID }}/g' search.html
