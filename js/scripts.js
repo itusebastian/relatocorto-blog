@@ -159,7 +159,7 @@ jQuery(document).ready(function ($) {
             </div>
             <div class="itu_blog_post_cat_holder">
               <span class="itu_blog_comment_holder">
-                <a href="${postUrl}#disqus_thread">Link</a>
+                <a href="${postUrl}#disqus_thread">Comentarios</a>
               </span>
               <span class="itu_blog_tag_holder hidden-xs">
                 <ul class="itu_many_tags">
