@@ -4,7 +4,7 @@ Welcome to my Fiction Blog repository! Here, I share my creative stories and ser
 
 ## Overview
 
-This repository hosts the live version of my fiction blog, [RelatoCorto.com](https://www.relatocorto.com). Instead of maintaining a traditional blog with all content accessible, I am implementing a unique approach: each month, a new version of the site will be published, and older content will be removed. This means that visitors will only be able to access the latest issue of my fiction online.
+This repository hosts the live version of my fiction blog, [Relato Corto](https://www.relatocorto.com). Instead of maintaining a traditional blog with all content accessible, I am implementing a unique approach: each month, a new version of the site will be published, and older content will be removed. This means that visitors will only be able to access the latest issue of my fiction online.
 
 ## How It Works
 
@@ -18,7 +18,7 @@ This approach is an experiment to see if this format affects my writing process.
 
 ## Explore My Fiction
 
-To read the latest stories, visit the blog at: [RelatoCorto.com](https://www.relatocorto.com)
+To read the latest stories, visit the blog at: [Relato Corto](https://www.relatocorto.com)
 
 ## Contributions
 
