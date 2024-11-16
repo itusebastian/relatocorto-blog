@@ -2775,6 +2775,7 @@ blockquote:after {
 -------------------------------------------------------------------*/
 /* Smartphones (portrait and landscape) ----------- */
 
+/* Media query for cellphone screens */
 @media (min-width: 0px) and (max-width: 767px) {
   .itu_logo img {
     max-width: 80%; /* Scale down further for small screens */
@@ -2813,6 +2814,10 @@ blockquote:after {
     width: 26px;
     height: 26px;
     line-height: 26px;
+  }
+  .container {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
