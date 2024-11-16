@@ -69,139 +69,185 @@ jQuery(document).ready(function ($) {
       },
     });
   }
+  
+  // Function to fetch JSON data
+  function fetchJson(url) {
+    return $.getJSON(url)
+      .done(data => data)
+      .fail(() => {
+        console.error(`Failed to load JSON from ${url}`);
+        return [];
+      });
+  }
 
   // Function to initialize the blog feed
   function initializeBlogFeed() {
     return $.Deferred(function (deferred) {
-      $.when($.get("/blog_posts.html"), $.get("/all_tags.html"))
-        .done(function (blogData, tagsData) {
-          const $tempDiv = $("<div>").html(blogData[0]);
-          const $allPosts = $tempDiv.find(".blog-post");
+      // Load articles and tags JSON
+      $.when(fetchJson("/articles.json"), fetchJson("/tags.json")).done(function (articlesResponse, tagsResponse) {
+        const articles = articlesResponse[0]; // Extract the actual articles data
+        const tags = tagsResponse[0]; // Extract the actual tags data
 
-          const $tagsDiv = $("<div>").html(tagsData[0]);
-          const $allTags = $tagsDiv.find(".tag");
+        // Check if articles is an array
+        if (Array.isArray(articles) && articles.length > 0) {
+          const totalPosts = articles.length;
+          const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-          if ($allPosts.length > 0) {
-            const totalPosts = $allPosts.length;
-            const totalPages = Math.ceil(totalPosts / postsPerPage);
-            renderPosts($allPosts, $allTags, 1);
-            generatePagination(totalPages);
-            $("#pagination").on("click", ".page-numbers", function (e) {
-              e.preventDefault();
-              const pageNumber = $(this).text();
-              renderPosts($allPosts, $allTags, pageNumber);
-              $("html, body").animate(
-                { scrollTop: $("#blog-feed").offset().top },
-                600
-              );
-            });
+          renderPosts(articles, tags, 1); // Pass the loaded tags and render posts for the first page
+          generatePagination(totalPages); // Generate pagination based on total pages
 
-            // Resolve the deferred object
-            deferred.resolve();
-          } else {
-            deferred.reject();
-          }
-        })
-        .fail(function () {
+          // Set up pagination click handler
+          $("#pagination").on("click", ".page-numbers", function (e) {
+            e.preventDefault();
+            const pageNumber = parseInt($(this).text());
+            renderPosts(articles, tags, pageNumber); // Render posts for the clicked page
+            generatePagination(totalPages, pageNumber); // Regenerate pagination for the current page
+            $("html, body").animate(
+              { scrollTop: $("#blog-feed").offset().top },
+              600
+            );
+          });
+
+          // Resolve the deferred object
+          deferred.resolve();
+        } else {
+          console.error("Articles data is not available or not an array.");
           deferred.reject();
-        });
+        }
+      }).fail(function (error) {
+        console.error("Error fetching data:", error);
+        deferred.reject();
+      });
     }).promise();
   }
+
 
   // Function to render posts for a specific page
   function renderPosts(posts, tags, pageNumber) {
     const start = (pageNumber - 1) * postsPerPage;
     const end = start + postsPerPage;
-    const $postsToShow = posts.slice(start, end);
+    const postsToShow = posts.slice(start, end);
 
     $("#blog-feed").empty();
 
-    $postsToShow.each(function () {
-      const postTitle = $(this).data("title");
-      const postDate = $(this).data("date");
-      const postCategory = $(this).data("category");
-      const postUrl = $(this).data("url");
-      const postImage = $(this).data("image");
-      const postExcerpt = $(this).data("excerpt");
-
-      // Randomly select two tags
-      const tagElements = getRandomTags(tags, 2);
+    postsToShow.forEach(post => {
+      const postTitle = post.title || "No Title";
+      const postDate = post.date || "No Date";
+      const postCategory = post.category || "No Category";
+      const postUrl = post.url || "#";
+      const postImage = post.image || "default-image.jpg";
+      const postExcerpt = post.excerpt || "No Excerpt";
 
       // Generate the HTML for the blog post
       const postHtml = `
-      <div class="col-md-12 item">
-        <div class="itu_post_holder">
-          <div class="head">
-            <div class="itu_up_title">
-              <span class="text-overflow-center">${postTitle}</span>
+        <div class="col-md-12 item">
+          <div class="itu_post_holder">
+            <div class="head">
+              <div class="itu_up_title">
+                <span class="text-overflow-center">${postTitle}</span>
+              </div>
+              <div class="itu_blog_post_cat">
+                <span class="itu_ddate">${postDate}</span>
+                <span class="itu_separate">|</span>
+                <span class="itu_category">${postCategory}</span>
+              </div>
+              <div class="itu_blog_post_title_holder">
+                <h3 class="blog_title">
+                  <a class="blog_title_a" href="${postUrl}">${postTitle}</a>
+                </h3>
+              </div>
             </div>
-            <div class="itu_blog_post_cat">
-              <span class="itu_ddate">${postDate}</span>
-              <span class="itu_separate">|</span>
-              <span class="itu_category">${postCategory}</span>
+            <div class="itu_media">
+              <div class="itu_blog_post_featuder_holder text-center">
+                <a href="${postUrl}" title="${postTitle}">
+                  <img class="img-responsive" src="${postImage}" alt="${postTitle}" />
+                </a>
+              </div>
             </div>
-            <div class="itu_blog_post_title_holder">
-              <h3 class="blog_title">
-                <a class="blog_title_a" href="${postUrl}">${postTitle}</a>
-              </h3>
-            </div>
-          </div>
-          <div class="itu_media">
-            <div class="itu_blog_post_featuder_holder text-center">
-              <a href="${postUrl}" title="${postTitle}">
-                <img class="img-responsive" src="${postImage}" alt="${postTitle}" />
-              </a>
-            </div>
-          </div>
-          <div class="itu_blog_post_content_holder">
-            <div class="text_holder">
-              <p>${postExcerpt}</p>
-            </div>
-            <div class="itu_blog_post_cat_holder">
-              <span class="itu_blog_comment_holder">
-                <a href="${postUrl}#disqus_thread">Comentarios</a>
-              </span>
-              <span class="itu_blog_tag_holder hidden-xs">
-                <ul class="itu_many_tags">
-                  <li><i class="fa fa-angle-down"></i><a>Etiquetas</a>
-                    <ul>
-                      ${tagElements}
-                    </ul>
-                  </li>
-                </ul>
-              </span>
+            <div class="itu_blog_post_content_holder">
+              <div class="text_holder">
+                <p>${postExcerpt}</p>
+              </div>
+              <div class="itu_blog_post_cat_holder">
+                <span class="itu_blog_comment_holder">
+                  <a href="${postUrl}#disqus_thread">Comentarios</a>
+                </span>
+                <span class="itu_blog_tag_holder hidden-xs">
+                  <ul class="itu_many_tags">
+                    <li><i class="fa fa-angle-down"></i><a>Etiquetas</a>
+                      <ul>
+                        ${tags
+                          .map(tag => `<li><a href="${tag.url}" rel="tag">${tag.name}</a></li>`)
+                          .join("")}
+                      </ul>
+                    </li>
+                  </ul>
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
 
       $("#blog-feed").append(postHtml);
     });
   }
 
-  // Function to generate pagination controls
-  function generatePagination(totalPages) {
+  // Call the initializeBlogFeed function and load the Disqus script after completion
+  initializeBlogFeed().done(function () {
+    // Create and insert the Disqus script tag dynamically after blog feed is ready
+    const disqusScript = document.createElement("script");
+    disqusScript.id = "dsq-count-scr";
+    disqusScript.src = "//relatocorto.disqus.com/count.js";
+    disqusScript.async = true;
+    document.body.appendChild(disqusScript);
+  });
+
+  // Function to generate pagination controls with hidden numbers
+  function generatePagination(totalPages, currentPage = 1) {
     let paginationHtml = '<div class="pagination-container">';
     paginationHtml += '<span class="itu_counts">';
     paginationHtml += `<span id="itu_masorny_posts_per_page">${postsPerPage}</span> / `;
-    paginationHtml += `<span id="itu_max_masorny_posts">${
-      totalPages * postsPerPage
-    }</span>`;
+    paginationHtml += `<span id="itu_max_masorny_posts">${totalPages * postsPerPage}</span>`;
     paginationHtml += "</span>";
     paginationHtml += '<div class="itu_pg">';
 
-    for (let i = 1; i <= totalPages; i++) {
-      paginationHtml += `<a class="page-numbers" href="/?paged=${i}">${i}</a>`;
-      if (i < totalPages) {
-        paginationHtml += " ";
+    // Helper function to add page links
+    const addPageLink = (pageNum) => {
+      return `<a class="page-numbers" href="/?paged=${pageNum}">${pageNum}</a>`;
+    };
+
+    // Display first page link
+    if (currentPage > 4) {
+      paginationHtml += addPageLink(1);
+      paginationHtml += ' ... ';  // Ellipsis for skipped pages
+    }
+
+    // Display page numbers around the current page (show 3 before and 3 after)
+    const startPage = Math.max(1, currentPage - 3); // Start from 3 pages before the current page
+    const endPage = Math.min(totalPages - 1, currentPage + 3); // End at 3 pages after the current page
+
+    for (let i = startPage; i <= endPage; i++) {
+      if (i === currentPage) {
+        paginationHtml += `<span class="current">${i}</span>`; // Highlight current page
+      } else {
+        paginationHtml += addPageLink(i);
       }
     }
 
-    paginationHtml += '<a class="next page-numbers" href="/?paged=2">Next</a>';
+    // Display last page link
+    if (currentPage < totalPages - 3) {
+      paginationHtml += ' ... ';  // Ellipsis for skipped pages
+      paginationHtml += addPageLink(totalPages);
+    }
+
+    // Next page link
+    paginationHtml += `<a class="next page-numbers" href="/?paged=${currentPage + 1}">Next</a>`;
+
     paginationHtml += "</div>";
     paginationHtml += "</div>";
 
+    // Update pagination HTML
     $("#pagination").html(paginationHtml);
   }
 

@@ -1,70 +1,62 @@
-// navigation.js
-
 document.addEventListener("DOMContentLoaded", function () {
   // Get the current post URL
   const currentUrl = window.location.pathname;
 
-  // Fetch the blog_posts.html file
-  fetch("/blog_posts.html")
-    .then((response) => response.text())
+  // Fetch the posts.json file
+  fetch("/articles.json")
+    .then((response) => response.json())
     .then((data) => {
-      // Parse the HTML content using DOMParser
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, "text/html");
-
-      // Get all post URLs from the parsed document
-      const postItems = doc.querySelectorAll(".blog-post");
-      const postUrls = Array.from(postItems).map((post) =>
-        post.getAttribute("data-url")
-      );
+      // Get all post URLs from the JSON data
+      const postUrls = data.map((post) => post.url);
 
       // Find the index of the current post
       const currentIndex = postUrls.indexOf(currentUrl);
 
       // Determine the previous and next URLs
-      const prevUrl = currentIndex > 0 ? postUrls[currentIndex - 1] : null;
-      const nextUrl =
+      const nextUrl = currentIndex > 0 ? postUrls[currentIndex - 1] : null;
+      const prevUrl =
         currentIndex < postUrls.length - 1 ? postUrls[currentIndex + 1] : null;
 
       // Update the Previous and Next post links
       const prevPostLink = document.getElementById("prevPost");
       const nextPostLink = document.getElementById("nextPost");
 
+      // Show only the previous link if it's the last post
+      if (currentIndex === postUrls.length - 1) {
+        // Hide the "Next" link for the last post
+        nextPostLink.style.display = "none";
+      } else {
+        if (nextUrl) {
+          nextPostLink.href = nextUrl;
+          nextPostLink.style.display = "inline"; // Show if there is a next post
+        } else {
+          nextPostLink.style.display = "none"; // Hide if no next post
+        }
+      }
+
+      // Handle the "Previous" link
       if (prevUrl) {
         prevPostLink.href = prevUrl;
         prevPostLink.style.display = "inline"; // Show if there is a previous post
       } else {
         prevPostLink.style.display = "none"; // Hide if no previous post
       }
-
-      if (nextUrl) {
-        nextPostLink.href = nextUrl;
-        nextPostLink.style.display = "inline"; // Show if there is a next post
-      } else {
-        nextPostLink.style.display = "none"; // Hide if no next post
-      }
     })
     .catch((error) => console.error("Error fetching blog posts:", error));
 
-  // Fetch the all_tags.html file
-  fetch("/all_tags.html")
-    .then((response) => response.text())
+  // Fetch the tags.json file
+  fetch("/tags.json")
+    .then((response) => response.json())
     .then((data) => {
-      // Parse the HTML content using DOMParser
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, "text/html");
-
-      // Get all tags from the parsed document
-      const tags = Array.from(doc.querySelectorAll(".tag"));
       // Shuffle tags and select 2 random tags
-      const shuffledTags = tags.sort(() => 0.5 - Math.random());
+      const shuffledTags = data.sort(() => 0.5 - Math.random());
       const selectedTags = shuffledTags.slice(0, 2);
 
       // Create HTML for selected tags
       const tagsHtml = selectedTags
         .map((tag) => {
-          const name = tag.getAttribute("data-name");
-          const url = tag.getAttribute("data-url");
+          const name = tag.name;
+          const url = tag.url;
           return `<li><a href="${url}" rel="tag">${name}</a></li>`;
         })
         .join("");
