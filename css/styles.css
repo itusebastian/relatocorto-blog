@@ -414,9 +414,6 @@ p:empty {
 .link_post .itu_acc_light .text_holder h3 {
   color: #444;
 }
-.itu_ddate {
-  padding-right: 10px;
-}
 .itu_blog_post_cat a:hover {
   transition: transform 0.35s;
   -moz-transition: transform 0.35s;
