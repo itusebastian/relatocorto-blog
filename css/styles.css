@@ -2819,6 +2819,10 @@ blockquote:after {
     padding-right: 0;
     padding-left: 0;
   }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 980px) {
