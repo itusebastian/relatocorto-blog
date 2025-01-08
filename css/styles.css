@@ -1268,6 +1268,7 @@ footer a {
 }
 /* Container for the sidebar */
 .itu_widget_area {
+  position: -webkit-sticky; /* For Safari */
   position: sticky;
   top: 0; /* Adjust this value if you need some space from the top */
 }
@@ -1278,6 +1279,10 @@ footer a {
   display: block;
   height: 1px; /* Adjust height if necessary */
   margin-top: 20px; /* Adjust spacing if necessary */
+}
+
+.itu_sticky_sidebar {
+  min-height: 100vh; /* Ensure the parent container is taller than the viewport */
 }
 
 .itu_widget .tagcloud:after {
