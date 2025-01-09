@@ -2828,6 +2828,9 @@ blockquote:after {
     margin-right: 0;
     margin-left: 0;
   }
+  .itu_blog_post_content_holder .text_holder {
+    text-align: center;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 980px) {
