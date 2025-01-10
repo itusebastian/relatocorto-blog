@@ -1,6 +1,21 @@
 jQuery.noConflict();
 jQuery(document).ready(function ($) {
-  const postsPerPage = 10; // Number of posts per page
+  let postsPerPage = 10; // Default number of posts per page
+
+  // Function to set the number of posts per page based on screen size
+  function setPostsPerPage() {
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      postsPerPage = 2; // Number of posts per page for mobile version
+    } else {
+      postsPerPage = 10; // Number of posts per page for other versions
+    }
+  }
+
+  // Call the function on page load
+  setPostsPerPage();
+
+  // Call the function whenever the window is resized
+  window.addEventListener("resize", setPostsPerPage);
 
   // Function to load header
   function loadHeader() {
