@@ -2831,6 +2831,9 @@ blockquote:after {
   .itu_blog_post_content_holder .text_holder {
     text-align: center;
   }
+  .itu_widget_hidden {
+    display: none;
+}
 }
 
 @media (min-width: 767px) and (max-width: 980px) {
